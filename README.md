@@ -1,15 +1,43 @@
-MySQL/MariaDB Auto-Tuning Script for Linux Servers
-Automatically optimize MySQL or MariaDB configuration (my.cnf) based on available system resources (CPU cores and RAM).
-This Bash script calculates and applies the best-fit settings for InnoDB, buffers, caches, timeouts, and connection limits, aiming for maximum performance and reliability — without manual tuning.
+# AutoTune MySQL/MariaDB Config Generator
 
-Features:
+This Bash script automatically generates optimized MySQL/MariaDB configuration parameters based on the system's available memory and architecture. It is ideal for sysadmins, DevOps engineers, and anyone looking to deploy database servers efficiently without manually tuning performance settings.
 
-Auto-detects total RAM and CPU cores
+## Features
 
-Allocates memory dynamically (e.g., InnoDB buffer, query cache, temp tables)
+- Detects total system memory and architecture (32-bit / 64-bit)
+- Calculates and sets critical MySQL/MariaDB parameters:
+  - `innodb_buffer_pool_size`
+  - `query_cache_size`
+  - `max_connections`
+  - `table_open_cache`
+  - `key_buffer_size`
+  - And more
+- Outputs configuration as a ready-to-use `my.cnf` snippet
+- Lightweight and dependency-free (pure Bash)
 
-Updates or creates my.cnf with safe, calculated defaults
+## Why Use This?
 
-Suitable for fresh installs or existing deployments
+Manual tuning of MySQL/MariaDB can be time-consuming and error-prone, especially across environments with different specs. This script simplifies the process by generating optimized configurations tailored to the specific server’s RAM, ensuring improved performance and stability.
 
-No dependencies – pure Bash script
+## Usage
+bash optimizer-mycnf.sh
+
+
+## Compatibility
+Linux distributions (Debian, Ubuntu, CentOS, etc.)
+
+MySQL and MariaDB (any major versions)
+Works on virtual machines, bare-metal servers, and containers
+
+## Requirements
+Bash shell
+free, awk, and grep commands (default in most distros)
+
+## Customization
+You can easily extend the script by modifying the parameter logic or adding new tunables. It's written in modular Bash for easy maintenance.
+
+## Contributing
+Contributions are welcome! If you have improvements, fixes, or additional parameter suggestions, feel free to submit a pull request or open an issue.
+
+## Contact
+For questions or feedback, please open an issue in this repository.
